@@ -1,0 +1,178 @@
+Command 1 -     git init:
+                        Initialize empty git repository.After
+                        this command, a .git file is created. This
+                        starts tracking of the file. We can stop
+                        this tracking by just simply deleting
+                        .git file.
+
+Command 2 -     git status:
+                        Show the working tree status.
+
+***To make git ignore files and not track them:
+                Step - 1: Create .gitignore file
+                            touch .gitignore
+                
+                Step - 2: Open this file in VScode.
+                            code .gitignore
+                
+                Step - 3: write the file name with the extension.
+                          Now, git will simply ignore the filenames
+                          included in .gitignore file.
+
+                Step - 4: Now, do git status and check the files.
+                          Even .gitignore is included in this list.
+
+Command 3 -     git add -A:
+                        Add everything to the staging area
+
+Command 4 -     git reset:
+                        Remove all the files from Staging area
+
+Command 5 -     git commit -m "Some msg":
+                        commits the files in staging area to
+                        the repository. '-m' is for message.
+                        We need to be detailed about the changes
+                        made to the code.
+
+Command 6 -     git log:
+                        we can see the commits we make.
+
+***Now, let's take a step back and picture where we are right now.
+
+With git, there are 3 stages that we need to know about: Working
+dir, Staging area, and Commited files.
+Right now, we are in out Working dir. Untracked and modified
+files will be in our working dir and we list those when we do
+
+                    git status
+
+Staging area is where we organize what we want to be commited
+to our repository. Reason for Staging area is that we can
+choose what we want commited.
+To add files to the Staging Area:
+
+                    git add -A
+
+-A is to add all the files that are currently untracked or 
+the files we have made changes to. We can also add the files
+individually.
+
+                    git add .gitignore
+                    git add calc.py
+                    
+and so on.
+After doing this, we can do
+
+                    git status
+
+and we will get a list of files currently untracked and files
+currently in staging area.
+
+
+If we ever want to remove all these files from the staging area, 
+we can do
+
+                    git reset
+
+or if we want only one file to be removed from staging area
+
+                    git reset calc.py
+
+
+
+    Working                 Staging                 .git dir
+      Dir                     Area                  (repository)
+       |                        |                       |
+       |                        |                       |
+       |                        |                       |
+       |    <--------- Checkout the project ----------  |
+       |                        |                       |
+       |                        |                       |
+       |                        |                       |
+       Stage Fixes -----------> |                       |
+       |                        |                       |
+       |                        |                       |
+       |                        |                       |
+       |                        | Commit -------------> 
+       |                        |                       |
+       |                        |                       |
+       |                        |                       |
+
+***Our first commit
+
+git add -A
+git commit - m "Initial Commit"
+
+
+***Cloning a remote repository
+A remote in Git is a common repository that all team 
+members use to exchange their changes. In most cases, 
+such a remote repository is stored on a code hosting 
+service like GitHub or on an internal server. 
+In contrast to a local repository, a remote typically 
+does not provide a file tree of the project's current state.
+
+
+Step 1 -    git clone <url> <where to clone>
+            Example
+
+                git clone ../remote_repo.git .
+                                |            |   
+                                |            |
+                                |            |
+                            a folder in      current
+                            our machine         dir
+
+                git clone https://github.com/usrnm/git_repo.git .
+                                    |                           |
+                                    |                           |
+                                    |                           |
+                                url of the remote          current
+                                repository                 repo
+
+***Viewing Information About the remote repo
+Command 1 -     git remote -v:
+                            The "remote" command helps you 
+                            to manage connections to remote 
+                            repositories.
+                            It allows you to show which remotes 
+                            are currently connected, but also to 
+                            add new connections or remove 
+                            existing ones. '-v' Shows URLs 
+                            of remote repositories when listing 
+                            your current remote connections. 
+                            By default, listing remote repositories 
+                            only shows you their shortnames 
+                            (e.g. "origin").
+
+Command 2 -     git branch -a:
+                            lists all of the branches in our
+                            repository, not only locally, but
+                            remotely as well.
+
+Command 3 -     git diff:
+                            gives the difference of the current
+                            version as comapred to the prev
+                            version.
+
+***Pushing changes 
+We have saved the changes locally by git add and git commit
+and want to push the changes to the remote repo so that other
+people have access to it.
+
+Command 1 -     git pull origin main:
+                            git pull pulls any changes made
+                            since the last time we pulled
+                            from that repo. 'origin' is the name
+                            of the remote repo, and 'main' is the
+                            name of our branch.
+
+Command 2 -     git push origin main:
+                            pushes the changes we made to the
+                            main branch.
+
+***Create a branch for desired feature
+Command 1 -     git branch <branch name>:
+                            creates a branch.
+Command 2 -     git checkout <other branch name>:
+                            to shift to the other branch.
